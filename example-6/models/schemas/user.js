@@ -17,11 +17,11 @@ const userSchema = Schema({
 //     this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync(10));
 // });
 
-userSchema.methods.setPassword = function(password) {
+userSchema.methods.setPassword = function (password) {
     this.password = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
 }
 
-userSchema.methods.validPassword = (password) => {
+userSchema.methods.validPassword = function (password) {
     return bcrypt.compareSync(password, this.password);
 }
 
